@@ -1,0 +1,1 @@
+netstat -rn | head -10 | grep default

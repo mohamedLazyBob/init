@@ -1,0 +1,2 @@
+ifconfig en0 inet
+ping -c2 10.11.255.255

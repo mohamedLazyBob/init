@@ -1,0 +1,1 @@
+Crontab : it works by opening the file with the Crontab -e command and modifiying it by adding what we wanna automate.

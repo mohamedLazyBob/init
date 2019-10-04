@@ -1,0 +1,121 @@
+*** 	the commands that the mention in the intra video	***
+
+df         (disk free) to know disk space
+top        show linux processes
+ps         see the processes that is running for the moment
+kill       kill the process
+
+ifconfig        configure and view network interfaces
+ping         	send a packets
+netstat        	displays the cnx in our network and the port used
+route        	show/ manipulate the IP table
+traceroute    	print the route packets trace to network host (comme google map)
+host        	static table lookup for hostnames
+networks        network name information
+Whois
+
+
+host.conf       resolver configuration file.
+resolv.conf    	....
+
+interfaces     	network interface configuration for ifup and ifdown.
+
+***	
+
+Nslookup	- find the ip address of a host
+		- find the domain name of an address
+		- ..    .. mail service for a domain	change the type = mx
+		-  and the name service for a host
+
+networksetup -getinfo ethernet
+
+
+ ***
+
+NAT :	Network Address Translation
+DHSP :	Dynamic Host Configuration Protocol.
+DNS  :	Domain Name System.
+
+
+************** System part ***************
+
+/etc/debian_version
+/etc/hostname
+
+Hostname : command shoes the user name
+
+Adduser : adds a new user
+
+Usermod -aG sudo Mohamed : adds the sudo privilege
+
+Id Mohamed : shows infos about the user
+ 
+Uptime : how many hours the system is running.
+
+Su surname : or adducer :  create a new user.
+
+**
+
+
+to generate a key:
+ 	1/ ssh-keygen (in your laptop) 
+	2/ cat ~/.ssh/id_rsa.pub | ssh mohamed@10.11.100.61 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys"
+
+*****
+
+To send files using ssh we use the command scp (secure file copy)
+
+  ~/ex.txt mohamed@10.11.100.61:~/desktop 
+
+**
+
+To change the keyboarded language : dpkg-reconfigure keyboard-configuration 
+To change the password : passed
+
+
+***
+
+Ssh id and status
+
+/etc/init.d/ssh activate/status
+Cat /var/run/sshd.pid 
+Kill <ssh pid>
+
+***
+
+
+du	(disk usage)  is used more than df in day to day project as it shows the disk usage as per directory level.
+
+Disk -l : lists the partition tables of drive.
+
+nohup  yourCommand & : run a command in the background
+
+Kill	kills a processes (%% to kill the last one lunched)
+
+Jobs	displays the commands that runs in the background
+
+Crontab	scheduling tasks in linux/unix os.
+
+Systemctl	
+
+To find out all services that have been run at startup:
+	systemctl list-units --type service
+
+To know if a service is active : systemctl is-active ssh
+				 /etc/init.d/ssh status
+
+To list all packages : apt list --installed
+
+APT	: (Advanced Package Tool).
+
+
+***
+
+		scriptes
+
+***
+
+
+attributes : basic information about …
+
+pkill 

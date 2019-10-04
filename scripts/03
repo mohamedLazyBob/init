@@ -1,0 +1,90 @@
+#!/bin/bash
+
+function create_makefile
+{
+	touch Makefile
+	echo -e 'NAME= prj_name
+
+SRC_PATH= .
+SRC_NAME=  
+SRC= $(addprefix $(SRC_PATH)/,$(SRC_NAME))
+
+OBJ_PATH= obj
+OBJ_NAME= $(SRC_NAME:.c=.o)
+OBJ= $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
+LIB_PATH= libft
+LIB= libft.a
+
+# ***************************************** #
+# Dont tuch thi code under this				#
+# exept what I told you so in the comments	#
+# ***************************************** #
+
+CC= gcc
+CFLAGES= -Wall -Wextra -Werror
+
+LD_FLAGS= -L$(LIB_PATH)
+LD_LIBS= -l$(patsubst lib%.a,%, $(LIB))
+HDR_FLAGS= -I.
+
+
+all:$(NAME)
+
+$(NAME): $(LIB_PATH)/$(LIB) $(OBJ)
+@$(CC) $(LD_FLAGS) $(LD_LIBS) $(OBJ) -o $@
+@echo "fillit: executable file is ready ;)" 	########## modify this
+
+$(LIB_PATH)/$(LIB):
+@make -C libft
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+@mkdir $(OBJ_PATH) 2> /dev/null || true
+@$(CC) $(CFLAGS) $(HDR_FLAGS) -o $@ -c $<
+
+clean:
+@rm -fr $(OBJ)
+@rmdir $(OBJ_PATH) 2> /dev/null || true
+@make -C libft clean
+@echo "fillit: object files deleted" 			########## modify this
+
+fclean: clean
+@rm -fr $(NAME)
+@make -C libft fclean
+@echo "fillit: all resources deleted" 			########## modify this
+
+re: fclean all' > Makefile
+}
+
+function create_files
+{
+	# you can add here your usual files
+	touch "$1.c"
+	touch "$1.h"
+}
+
+echo -e "hello there mate. to creat :\n--------------		press"
+echo -e "the makefile		1\nsource files,		2\nthe hole folder		3"
+
+read -p "--> " nbr
+
+if [ ${nbr} -eq 1 ]
+then
+	create_makefile
+	mv ~/Makefile . 2> /dev/null
+elif [ ${nbr} -eq 2 ]
+then
+	read -p "file name : " name
+	create_files $name
+
+elif [ ${nbr} -eq 3 ]
+then
+	read -p "file name : " name
+	mkdir ${name}
+	cd ${name}
+	create_makefile
+	create_files ${name}
+	mv ~/${name} . 2> /dev/null
+else
+	echo "Invalid Options"
+fi

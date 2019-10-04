@@ -1,0 +1,11 @@
+with ssh
+- you type the command "ssh username@userIp" 
+-- example : mohamed@10.11.100.45
+- you type the user name password.
+- done
+
+with graphic session
+- boot your machine
+- type your username (login)
+- type your password
+- done

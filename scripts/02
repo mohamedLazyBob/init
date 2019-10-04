@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+	echo "usage: ./2 user_name"
+else
+
+	sudo pkill -u $1
+
+	sudo userdel -rf $1
+
+fi
